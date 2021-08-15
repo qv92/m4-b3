@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head th:replace="/layout :: header">
+<body> 
+
+	<div class="container">
+	<!-- Top box -->
+		<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="https://bloganh.net/wp-content/uploads/2021/03/chup-anh-dep-anh-sang-min.jpg">
+				<div class="tm-header">
+					<div class="row tm-header-inner">
+						<div class="col-md-6 col-12">
+							<img src="../../assets/img/simple-house-logo.png" alt="Logo" class="tm-site-logo" />
+							<div class="tm-site-text-box">
+								<h1 class="tm-site-title">Food Zone</h1>
+								<h6 class="tm-site-description">new restaurant template</h6>	
+							</div>
+						</div>
+						<nav class="col-md-6 col-12 tm-nav">
+							<ul class="tm-nav-ul">
+								<li class="tm-nav-li"><a href="/" class="tm-nav-link active">Home</a></li>
+								<li class="tm-nav-li"><a href="/create" class="tm-nav-link">Create</a></li>
+							</ul>
+						</nav>	
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<main>
+			<header class="row tm-welcome-section">
+				<h2 class="col-12 text-center tm-section-title">Welcome to Food Zone</h2>
+				<p class="col-12 text-center">Viet Nam's Brand, World Pro.</p>
+			</header>
+			
+			<div>
+				<nav>
+					<ul>
+						<li><h2>Menu</h2></li>
+						<li>
+							<form action="find">
+								<input type="text" name="fName" placeholder="Find something...">
+								<buton type="submit">Tìm kiếm</buton>
+							</form>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Gallery -->
+			<div class="row">
+				<!-- gallery page 1 -->
+					<div class="col-lg-3 col-md-4 col-sm-6 col-12" th:each="food, loop: ${listFood}">
+						<figure>
+							<img th:src="@{${food.getImg()}}" alt="Image" class="img-fluid" />
+							<figcaption>
+								<h4 class="tm-gallery-title" th:text="${food.getTen()}"></h4>
+								<p class="tm-gallery-description" th:text="${food.getMota()}"></p>
+								<p class="tm-gallery-price" th:text="${food.getGia()}"></p>
+                                <p th:switch="${food.getLoai()}">
+                                    <span th:case="1">Pizza</span>
+                                    <span th:case="2">Salad</span>
+                                    <span th:case="3">Noodle</span>
+                                </p>
+                                <a th:href="@{delete(index=${loop.index})}">Delete</a>
+                                <a th:href="@{edit(index=${loop.index})}">Edit</a>
+							</figcaption>
+						</figure>
+					</div>
+			</div>
+
+		</main>
+		<footer th:replace="/layout :: footer"></footer>
+	</div>
+	<script th:replace="~{/layout :: script}"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+model/Food.java
+ model.Food
+configuration/AppConfiguration.java
+ configuration.AppConfiguration
+configuration/AppInitializer.java
+ configuration.AppInitializer
+service/FoodService.java
+ service.FoodService
+controller/FoodController.java
+ controller.FoodController

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head th:replace="/layout :: header">
+</head>
+<body>
+<div class="container">
+    <h3>Add Food</h3>
+    <p>
+        <a th:href="@{/}">
+            Back to home
+        </a>
+    </p>
+    <div id="form">
+        <form method="post" action="create">
+            <div>
+                <label>Tên</label>
+                <input type="text" name="ten"/>
+            </div>
+            <div>
+                <label>Ảnh</label>
+                <input type="text" name="img" placeholder="../../assets/img/gallery/0x.jpg"/>
+            </div>
+            <div>
+                <label>Giá</label>
+                <input type="text" name="gia" />
+            </div>
+            <div>
+                <label>Mô tả</label>
+                <input type="text" name="mota" />
+            </div>
+            <div>
+                <label>Loại</label>
+                <input type="text" name="loai" />
+            </div>
+            <input type="submit" value="Save"/>
+        </form>
+    </div>
+<footer th:replace="/layout :: footer"></footer>
+</div>
+<script th:replace="~{/layout :: script}"></script>
+</body>
+</html>
